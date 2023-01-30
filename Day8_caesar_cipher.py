@@ -94,14 +94,16 @@ def caesar(direction, text, shift):
 os.system("clear")
 print(logo)
 
-opt = "yes"
-while opt == "yes":
+should_continue = True
+while should_continue:
     direction = input("\nType 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
     shift = shift % 26
     caesar(direction, text, shift)
     opt = input("\nContinue? ")
+    if opt == "no":
+        should_continue = False
 
 os.system("clear")
 
