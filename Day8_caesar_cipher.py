@@ -91,17 +91,19 @@ def caesar(direction, text, shift):
             new_text += alphabet[pos]
     print(f"\n---> The {direction}d text is [{new_text}] <---")
 
+os.system("clear")
+print(logo)
+
 opt = "yes"
 while opt == "yes":
-    os.system("clear")
-    print(logo)
     direction = input("\nType 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
-    while shift > 50:
-        shift = int(input("Too high number! Type the shift number <= 50:\n"))
+    shift = shift % 26
     caesar(direction, text, shift)
     opt = input("\nContinue? ")
+
+os.system("clear")
 
 
 
