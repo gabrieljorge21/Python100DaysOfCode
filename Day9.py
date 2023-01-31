@@ -86,35 +86,41 @@ import os
 from Day9_art import logo
 print(logo)
 
-bidders = []
+bids = {}
 should_continue = True
 
-def add_bidder(name, value):
-    new_bidder = {}
-    new_bidder["name"]= name
-    new_bidder["price"] = value
-    bidders.append(new_bidder)
+# def add_bidder(name, value):
+#     new_bidder = {}
+#     new_bidder["name"]= name
+#     new_bidder["price"] = value
+#     bids = new_bidder
 
-def find_highest_bidder():
-    print(bidders)
+def find_highest_bidder(bids_record):
+    print(bids_record)
     max_bid = 0
     name=""
-    value=0
-    for bidder in bidders:
-        if bidder["price"] > max_bid:
-            name = bidder["name"]
-            max_bid = bidder["price"]
+    # for bidder in bids:
+    #     if bidder["price"] > max_bid:
+    #         name = bidder["name"]
+    #         max_bid = bidder["price"]
+    #bidder has the key value on bids
+    #with the key value I can access the value asociated
+    for bidder in bids_record:
+        bid = bids_record[bidder]
+        if bid > max_bid:
+            max_bid = bid
+            name = bidder
 
     print(f"\nThe winner is {name} with a bid of ${max_bid}")   
 
 while should_continue:
     name = input("What's your name?: ")
     value = int(input("What's your bid?: $"))
-    add_bidder(name, value)
+    bids[name] = value
     opt = input("Are there any other biggers? ")
     if opt == "no":
         should_continue = False
     os.system("clear")
 
-find_highest_bidder()
+find_highest_bidder(bids)
 
