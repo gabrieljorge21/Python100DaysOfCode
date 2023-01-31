@@ -77,7 +77,6 @@ def add_new_country(country, total_visits, cities):
     travel_log.append(new_country)
 
 
-
 #🚨 Do not change the code below
 add_new_country("Russia", 2, ["Moscow", "Saint Petersburg"])
 print(travel_log)
@@ -95,6 +94,19 @@ def add_bidder(name, value):
     new_bidder["name"]= name
     new_bidder["price"] = value
     bidders.append(new_bidder)
+
+def find_highest_bidder():
+    print(bidders)
+    max_bid = 0
+    name=""
+    value=0
+    for bidder in bidders:
+        if bidder["price"] > max_bid:
+            name = bidder["name"]
+            max_bid = bidder["price"]
+
+    print(f"\nThe winner is {name} with a bid of ${max_bid}")   
+
 while should_continue:
     name = input("What's your name?: ")
     value = int(input("What's your bid?: $"))
@@ -104,13 +116,5 @@ while should_continue:
         should_continue = False
     os.system("clear")
 
-print(bidders)
-max_bid = 0
-name=""
-value=0
-for bidder in bidders:
-    if bidder["price"] > max_bid:
-        name = bidder["name"]
-        max_bid = bidder["price"]
+find_highest_bidder()
 
-print(f"\nThe winner is {name} with a bid of ${max_bid}")
